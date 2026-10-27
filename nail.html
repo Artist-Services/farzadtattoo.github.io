@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مائده ساعی</title>
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff0f5;
+  font-family: Tahoma, sans-serif;
+}
+.card {
+  width: 85%;
+  max-width: 360px;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 8px 30px #d9a0b733;
+}
+h2 {
+  color: #b54d79;
+  margin-bottom: 25px;
+}
+.number {
+  direction: ltr;
+  font-size: 21px;
+  font-weight: bold;
+  padding: 18px 5px;
+  background: #fff0f5;
+  border-radius: 12px;
+  color: #49313e;
+}
+button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #b54d79;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>مائده ساعی</h2>
+  <div class="number" id="cardNumber">6219861800092990</div>
+  <button onclick="copyCard()">کپی شماره کارت</button>
+</div>
+
+<script>
+function copyCard() {
+  const number = "6219861800092990";
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(number).then(
+      () => alert("شماره کارت کپی شد 🌸"),
+      () => fallbackCopy(number)
+    );
+  } else {
+    fallbackCopy(number);
+  }
+}
+
+function fallbackCopy(number) {
+  const input = document.createElement("textarea");
+  input.value = number;
+  input.style.position = "fixed";
+  input.style.opacity = "0";
+  document.body.appendChild(input);
+  input.select();
+
+  try {
+    document.execCommand("copy");
+    alert("شماره کارت کپی شد 🌸");
+  } catch (e) {
+    alert("شماره کارت: " + number);
+  }
+
+  input.remove();
+}
+</script>
+</body>
+</html>
