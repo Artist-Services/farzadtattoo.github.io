@@ -4,88 +4,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مائده ساعی</title>
+<title>پرداخت خدمات ناخن | مائده ساعی</title>
 <style>
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff0f5;
-  font-family: Tahoma, sans-serif;
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;display:flex;align-items:center;
+  justify-content:center;padding:20px;
+  font-family:Tahoma,Arial,sans-serif;
+  background:linear-gradient(145deg,#fff0f5,#f8e3ec,#fff);
+  color:#49313e
 }
-.card {
-  width: 85%;
-  max-width: 360px;
-  padding: 30px 20px;
-  background: white;
-  border-radius: 22px;
-  text-align: center;
-  box-shadow: 0 8px 30px #d9a0b733;
+.card{
+  width:100%;max-width:390px;background:#fff;
+  border-radius:26px;padding:28px 22px;text-align:center;
+  box-shadow:0 12px 40px #b77d952b;border:1px solid #f4dce7
 }
-h2 {
-  color: #b54d79;
-  margin-bottom: 25px;
+.icon{font-size:42px}
+h1{font-size:24px;margin:12px 0;color:#a34470}
+.sub{color:#947583;font-size:14px;line-height:2}
+.label{margin-top:24px;font-size:13px;color:#92717f}
+.name{font-size:20px;font-weight:bold;margin-top:8px}
+.number{
+  direction:ltr;unicode-bidi:embed;font-size:20px;
+  font-weight:bold;letter-spacing:1px;margin:12px 0;
+  padding:15px 8px;background:#fff3f8;border-radius:12px
 }
-.number {
-  direction: ltr;
-  font-size: 21px;
-  font-weight: bold;
-  padding: 18px 5px;
-  background: #fff0f5;
-  border-radius: 12px;
-  color: #49313e;
+button{
+  width:100%;border:0;border-radius:12px;padding:14px;
+  font-size:16px;font-weight:bold;cursor:pointer;
+  background:#b94e7c;color:white
 }
-button {
-  width: 100%;
-  margin-top: 18px;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: #b54d79;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
+.note{
+  margin-top:24px;padding:16px;background:#fff5f8;
+  border-radius:14px;line-height:2;font-size:14px
 }
+footer{font-size:12px;color:#a58c98;margin-top:22px}
 </style>
 </head>
 <body>
-<div class="card">
-  <h2>مائده ساعی</h2>
+<main class="card">
+  <div class="icon">💅🏻</div>
+  <h1>مائده ساعی</h1>
+  <div class="sub">زیبایی دستان شما، هنر ماست ✨</div>
+
+  <div class="label">شماره کارت به نام</div>
+  <div class="name">مائده ساعی</div>
   <div class="number" id="cardNumber">6219861800092990</div>
   <button onclick="copyCard()">کپی شماره کارت</button>
-</div>
 
+  <div class="note">
+    <strong>💗 خدمات کاشت ناخن</strong><br>
+    برای رزرو نوبت، لطفاً ۵۰٪ مبلغ خدمات را به‌عنوان بیعانه واریز کنید.<br>
+    <strong>مبلغ بیعانه: ۵,۰۰۰,۰۰۰ تومان</strong><br>
+    لطفاً رسید واریز را ارسال کنید.
+  </div>
+  <footer>ممنون از اعتماد و انتخاب شما 🌸</footer>
+</main>
 <script>
-function copyCard() {
-  const number = "6219861800092990";
-
-  if (navigator.clipboard && window.isSecureContext) {
+function copyCard(){
+  const number="6219861800092990";
+  if(navigator.clipboard && window.isSecureContext){
     navigator.clipboard.writeText(number).then(
-      () => alert("شماره کارت کپی شد 🌸"),
-      () => fallbackCopy(number)
+      ()=>alert("شماره کارت کپی شد 🌸"),
+      ()=>fallbackCopy(number)
     );
-  } else {
-    fallbackCopy(number);
-  }
+  }else{fallbackCopy(number);}
 }
-
-function fallbackCopy(number) {
-  const input = document.createElement("textarea");
-  input.value = number;
-  input.style.position = "fixed";
-  input.style.opacity = "0";
+function fallbackCopy(number){
+  const input=document.createElement("textarea");
+  input.value=number;
+  input.style.position="fixed";
+  input.style.opacity="0";
   document.body.appendChild(input);
   input.select();
-
-  try {
+  try{
     document.execCommand("copy");
     alert("شماره کارت کپی شد 🌸");
-  } catch (e) {
-    alert("شماره کارت: " + number);
+  }catch(e){
+    alert("لطفاً شماره کارت را دستی کپی کنید: "+number);
   }
-
   input.remove();
 }
 </script>
