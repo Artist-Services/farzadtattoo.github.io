@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>Nars Beauty Salon | پرداخت</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;padding:24px 14px;min-height:100vh;
+  display:flex;justify-content:center;align-items:center;
+  background:radial-gradient(ellipse at 5% 55%,#5d5d5d 0%,#242424 25%,#080808 70%);
+  color:#f6dfaa;font-family:Tahoma,Arial,sans-serif
+}
+.card{
+  width:100%;max-width:480px;padding:30px 20px;
+  border:2px solid #d6b66b;border-radius:32px;
+  background:linear-gradient(145deg,#17150fef,#050505f5);
+  box-shadow:0 0 30px #d6b66b20;text-align:center
+}
+.logo{font-family:Georgia,serif;font-size:57px;font-weight:bold;letter-spacing:5px;color:#f3d58d;text-shadow:0 0 22px #c99c3d55}
+.brand{font-size:14px;letter-spacing:5px;direction:ltr;margin:0 0 30px;color:#e6c77e}
+h1{font-size:23px;margin:0 0 12px;color:#ffe2a0}
+.heart{color:#d7b56b;font-size:24px;margin:12px auto 22px}
+.item{
+  margin:13px 0;padding:17px 14px;border:1px solid #b9954b;
+  border-radius:22px;background:#090909;display:flex;
+  align-items:center;gap:12px;text-align:right
+}
+.info{flex:1;min-width:0}
+.label{font-size:13px;color:#d8c69b;margin-bottom:9px}
+.value{font-size:clamp(15px,4vw,21px);font-weight:bold;color:#ffe1a0;overflow-wrap:anywhere}
+button{
+  border:0;border-radius:14px;padding:12px 14px;
+  background:linear-gradient(135deg,#f7dfa0,#bd8c35);
+  color:#19130a;font-family:inherit;font-weight:bold;font-size:14px;
+  cursor:pointer;flex-shrink:0
+}
+.note{
+  margin-top:25px;padding:18px 12px;border-top:1px solid #b9954b;
+  border-bottom:1px solid #b9954b;line-height:2.1;color:#f7e6bd
+}
+.note strong{display:block;font-size:19px;color:#f4d58e;margin-bottom:6px}
+.thanks{margin-top:20px;color:#c9aa63;font-size:14px}
+footer{margin-top:24px;font-size:10px;letter-spacing:3px;direction:ltr;color:#a68a50}
+#toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  padding:12px 20px;border:1px solid #d6b66b;border-radius:12px;
+  background:#17130d;color:#f7dfa0;opacity:0;transition:opacity .2s;
+  pointer-events:none;white-space:nowrap
+}
+#toast.show{opacity:1}
+</style>
+</head>
+
+<body>
+<main class="card">
+  <div class="logo">NARS</div>
+  <div class="brand">BEAUTY SALON</div>
+
+  <h1>خدمات کاشت ناخن</h1>
+  <div class="heart">♡ ━━━━━ ♥ ━━━━━ ♡</div>
+
+  <section class="item">
+    <div class="info">
+      <div class="label">صاحب حساب</div>
+      <div class="value">کیان تیموری</div>
+    </div>
+  </section>
+
+  <section class="item">
+    <div class="info">
+      <div class="label">شماره کارت</div>
+      <div class="value" dir="ltr">6219861852876761</div>
+    </div>
+    <button type="button" onclick="copyText('6219861852876761')">کپی</button>
+  </section>
+
+  <section class="item">
+    <div class="info">
+      <div class="label">شماره شبا</div>
+      <div class="value" dir="ltr">850560611827016752115802</div>
+    </div>
+    <button type="button" onclick="copyText('850560611827016752115802')">کپی</button>
+  </section>
+
+  <section class="note">
+    <strong>ارسال فیش واریزی</strong>
+    پس از واریز مبلغ، لطفاً تصویر فیش واریزی را برای تأیید پرداخت ارسال کنید.
+  </section>
+
+  <div class="thanks">با تشکر از اعتماد و همراهی شما ♥</div>
+  <footer>NARS • BEAUTY SALON</footer>
+</main>
+
+<div id="toast" role="status">با موفقیت کپی شد ✓</div>
+
+<script>
+async function copyText(text){
+  try{
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(text);
+    }else{
+      const el=document.createElement('textarea');
+      el.value=text;
+      el.style.position='fixed';
+      el.style.opacity='0';
+      document.body.appendChild(el);
+      el.select();
+      const ok=document.execCommand('copy');
+      el.remove();
+      if(!ok) throw new Error('copy failed');
+    }
+    const toast=document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),2000);
+  }catch(e){
+    alert('کپی خودکار انجام نشد. لطفاً شماره را دستی کپی کنید.');
+  }
+}
+</script>
+</body>
+</html>
